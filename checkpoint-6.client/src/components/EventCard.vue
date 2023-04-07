@@ -1,14 +1,18 @@
 <template>
-  <div class="cover-img rounded align-content-end" :style="`background-image: url(${towerEvent.coverImg})`">
-    <!-- <img class=" cover-img" :src="towerEvent.coverImg" :title="towerEvent.name"> -->
-    <div class="px-1 glass-card rounded-bottom">
+  <router-link v-if="towerEvent?.id" :to="{ name: 'EventDetails', params: { eventId: towerEvent.id } }">
+    <div class="cover-img rounded align-content-end" :style="`background-image: url(${towerEvent?.coverImg})`">
+      <div class="px-1 glass-card rounded-bottom">
 
-      <h4 class="light my-0 px-2 mt-2">{{ towerEvent.name }}</h4>
-      <p class="my-0 px-2">{{ towerEvent.location }}</p>
-      <p class="my-0 px-2">{{ towerEvent.startDate.toLocaleString() }}</p>
-      <p class="light text-end my-0 px-2 mb-2"><span class="accent">{{ towerEvent.capacity }}</span> spots left</p>
+        <h4 class="light my-0 px-2 mt-2">{{ towerEvent?.name }}</h4>
+        <p class="my-0 px-2 lb">{{ towerEvent?.location }}</p>
+        <p class="my-0 px-2 lb">{{ towerEvent?.startDate.toLocaleString() }}</p>
+        <p v-if="towerEvent?.isCanceled" class="my-1 text-center bg-bad rounded">Canceled</p>
+        <p v-else-if="towerEvent?.capacity == 0" class="my-1 text-center bg-bad rounded">At Capacity</p>
+        <p v-else class="light text-end my-0 px-2  lb mb-2"><span class="accent">{{ towerEvent?.capacity }}</span> spots
+          left</p>
+      </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -39,16 +43,16 @@ export default {
   /* object-fit: cover; */
 }
 
-p {
-  color: #c9f1f8;
+.lb {
+  color: #ccf3fd;
 }
 
 .accent {
-  color: #7cfffd;
+  color: #88fcfc;
 }
 
 .light {
-  color: #e2f3f3
+  color: #eff8f8
 }
 
 .glass-card {
@@ -58,5 +62,11 @@ p {
   border-bottom-right-radius: 7px; */
   backdrop-filter: blur(7px);
   width: 100%;
+  white-space: nowrap;
+}
+
+.bg-bad {
+  background-color: #dc3545;
+  color: #eff8f8;
 }
 </style>

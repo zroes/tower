@@ -12,8 +12,9 @@
     </div>
 
   </div>
+  <!-- NOTE try hiding canceled events -->
   <div class="row m-3">
-    <div v-for="towerEvent in towerEvents" class="col m-3 bg-darkish p-2 rounded">
+    <div v-for="towerEvent in towerEvents" class="col m-3 bg-darkish p-2 rounded elevation-5">
       <EventCard :towerEvent="towerEvent" />
     </div>
   </div>

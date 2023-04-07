@@ -6,6 +6,16 @@ export const AppState = reactive({
   /** @type {import('./models/Account.js').Account} */
   account: {},
 
+  /** @type {import('./models/TowerEvent.js').TowerEvent[]} */
+  towerEvents: [],
+
   /** @type {import('./models/TowerEvent.js').TowerEvent} */
-  towerEvents: []
+  activeEvent: null,
+
+  /** @type {import('./models/Ticket.js').Ticket[]} */
+  tickets: [],
+
+  /** @type {import('./models/Comment.js').Comment[]} */
+  comments: [],
+
 })
